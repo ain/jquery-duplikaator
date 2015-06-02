@@ -1,0 +1,25 @@
+{
+  "name": "jquery-duplikaator",
+  "description": "jQuery Duplikaator duplicates form fields and listens for their change to return compound data.",
+  "main": "src/jquery-duplikaator.js",
+  "version": "0.0.1",
+  "license": "GPL-3.0",
+  "ignore": [
+    ".git*",
+    "test/",
+    "**/.*",
+    "Gruntfile.js"
+  ],
+  "dependencies": {
+    "jquery": "~1.2"
+  },
+  "devDependencies": {
+  },
+  "authors": [
+    "Ain Tohvri <ain@flashbit.net>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ain/jquery-duplikaator.git"
+  }
+}

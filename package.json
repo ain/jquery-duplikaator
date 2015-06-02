@@ -1,0 +1,47 @@
+{
+  "name": "jquery-duplikaator",
+  "version": "0.0.1",
+  "description": "jQuery Duplikaator duplicates form fields and listens for their change to return compound data.",
+  "homepage": "https://github.com/ain/jquery-duplikaator",
+  "author": {
+    "name": "Ain Tohvri",
+    "email": "ain@flashbit.net"
+  },
+  "bugs": "https://github.com/ain/jquery-duplikaator/issues",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt": "~0.4.4",
+    "grunt-contrib-copy": "~0.5.0",
+    "grunt-contrib-uglify": "~0.4.0",
+    "grunt-contrib-jshint": "~0.9.2",
+    "grunt-contrib-connect": "~0.7.1",
+    "grunt-contrib-clean": "~0.5.0",
+    "grunt-contrib-watch": "~0.6.1",
+    "grunt-mocha": "~0.4.10",
+    "jit-grunt": "~0.3.2",
+    "time-grunt": "~0.3.1",
+    "grunt-concurrent": "~0.5.0"
+  },
+  "engines": {
+    "node": ">=0.12.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ain/jquery-duplikaator.git"
+  },
+  "licenses": [
+    {
+      "type": "GPL",
+      "url": "https://github.com/ain/jquery-duplikaator/blob/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "test": "grunt travis --verbose"
+  },
+  "keywords": [
+    "javascript",
+    "menu",
+    "jquery",
+    "layout"
+  ]
+}
