@@ -5,18 +5,26 @@
   <title>Mocha Spec Runner</title>
 </head>
 <body>
-  <form>
+  <form action="">
     <!-- Add form elements -->
+    <button class="js_duplicate-button">Duplicate</button>
+    <fieldset>
+      <input type="text" name="title">
+      <input type="password" name="password">
+    </fieldset>
   </form>
 
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+  <script src="../bower_components/jquery/jquery.js"></script>
   <script src="lib/mocha/mocha.js"></script>
   <script>mocha.setup('bdd')</script>
-  <!-- assertion framework -->
   <script src="lib/chai.js"></script>
   <script>var expect = chai.expect</script>
   <script src="spec/test.js"></script>
   <script src="../src/jquery-duplikaator.js"></script>
-  <script>mocha.run()</script>
+  <script>
+    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+      mocha.run();
+    }
+  </script>
 </body>
 </html>
