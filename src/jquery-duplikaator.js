@@ -5,9 +5,13 @@
   var pluginName = 'duplikaator';
 
   var defaults = {
+    selectors: {
+      triggerer: '.js_duplikaator__triggerer'
+    }
   };
 
   var selectors = {
+    triggerer: defaults.selectors.triggerer
   };
 
   var classes = {
@@ -20,7 +24,7 @@
     this._defaults = defaults;
     this._name = pluginName;
 
-    addEventListeners();
+    this.init();
   }
 
   function addEventListeners() {
@@ -29,7 +33,12 @@
 
   Duplikaator.prototype = {
 
-    init: function(event) {
+    init: function() {
+      addEventListeners();
+    },
+
+    destroy: function() {
+
     }
 
   };
