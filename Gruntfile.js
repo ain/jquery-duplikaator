@@ -32,6 +32,7 @@ module.exports = function (grunt) {
       bdd: {
         files: [
           '<%= yeoman.src %>/*.js',
+          'test/index.html',
           'test/spec/test.js'
         ],
         tasks: ['test']
