@@ -1,4 +1,7 @@
+/* global expect, it, beforeEach, afterEach, describe */
+
 'use strict';
+
 (function() {
 
   describe('Duplikaator', function() {
