@@ -1,4 +1,4 @@
-(function($, window, document) {
+(function($) {
 
   'use strict';
 
@@ -51,4 +51,4 @@
     });
   };
 
-})(jQuery, window, document);
+})(jQuery);
