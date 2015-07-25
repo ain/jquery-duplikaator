@@ -6,14 +6,14 @@
 
   describe('Duplikaator', function() {
 
+    var form = $('form');
+    var duplikaator = null;
+    var pluginName = 'plugin_duplikaator';
     var config = {
       selectors: {
         triggerer: '.js_duplikaator__triggerer'
       }
     };
-    var form = $('form');
-    var duplikaator = null;
-    var pluginName = 'plugin_duplikaator';
 
     describe('init', function() {
       beforeEach(function() {

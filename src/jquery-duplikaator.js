@@ -4,44 +4,38 @@
 
   var pluginName = 'duplikaator';
 
-  var defaults = {
-    selectors: {
-      triggerer: '.js_duplikaator__triggerer'
-    }
-  };
-
-  var selectors = {
-    triggerer: defaults.selectors.triggerer
-  };
-
-  var classes = {
-  };
-
   function Duplikaator(element, options) {
 
     this.element = $(element);
     this.settings = $.extend({}, defaults, options);
-    this._defaults = defaults;
-    this._name = pluginName;
 
-    this.init();
-  }
+    var classes = {
+      triggerer: 'js_duplikaator__triggerer'
+    };
 
-  function addEventListeners() {
+    var defaults = {
+      selectors: {
+        triggerer: '.' + classes.triggerer
+      }
+    };
 
-  }
+    var selectors = {
+      triggerer: defaults.selectors.triggerer
+    };
 
-  Duplikaator.prototype = {
+    this.destroy = function() {
 
-    init: function() {
-      addEventListeners();
-    },
+    };
 
-    destroy: function() {
-
+    function addEventListeners() {
     }
 
-  };
+    function init() {
+      addEventListeners();
+    }
+
+    init();
+  }
 
   $.fn[pluginName] = function(options) {
     return this.each(function() {
