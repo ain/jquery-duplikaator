@@ -6,25 +6,15 @@
 
   function Duplikaator(element, options) {
 
+    var defaults = {
+      nameGenerator: true
+    };
+
     this.element = $(element);
     this.settings = $.extend({}, defaults, options);
 
-    var classes = {
-      triggerer: 'js_duplikaator__triggerer'
-    };
-
-    var defaults = {
-      selectors: {
-        triggerer: '.' + classes.triggerer
-      }
-    };
-
-    var selectors = {
-      triggerer: defaults.selectors.triggerer
-    };
-
     this.destroy = function() {
-
+      this.element.removeData('plugin_' + pluginName);
     };
 
     function addEventListeners() {

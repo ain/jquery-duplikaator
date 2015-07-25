@@ -10,9 +10,7 @@
     var duplikaator = null;
     var pluginName = 'plugin_duplikaator';
     var config = {
-      selectors: {
-        triggerer: '.js_duplikaator__triggerer'
-      }
+      nameGenerator: true
     };
 
     describe('init', function() {
@@ -32,20 +30,33 @@
         return expect(duplikaator.settings).to.be.an.object;
       });
 
-      it('expected to construct object with settings', function() {
-        return expect(duplikaator.settings.selectors).to.eql(config.selectors);
+      it('expected to construct object overriding defaults', function() {
+        duplikaator.destroy();
+        var newConfig = {
+          nameGenerator: false
+        };
+        duplikaator = form.duplikaator(newConfig).data(pluginName);
+        var nameGenerator = duplikaator.settings.nameGenerator;
+        return expect(nameGenerator).to.eql(newConfig.nameGenerator);
       });
 
       it('expected to construct object with defaults', function() {
         duplikaator.destroy();
         duplikaator = form.duplikaator().data(pluginName);
-        return expect(duplikaator.settings.selectors.triggerer).to.eql(config.selectors.triggerer);
+        var nameGenerator = duplikaator.settings.nameGenerator;
+        return expect(nameGenerator).to.eql(config.nameGenerator);
       });
 
-      it('expected to have click handler on triggerer', function() {
-        return expect(duplikaator).to.be.an.object;
-      });
+    });
 
+    describe('destroy', function() {
+      beforeEach(function() {
+        duplikaator = form.duplikaator(config);
+      });
+      it('expected to remove data', function() {
+        duplikaator.data(pluginName).destroy();
+        return expect(duplikaator.data(pluginName)).to.not.be.ok;
+      });
     });
 
     describe('duplicate', function() {
