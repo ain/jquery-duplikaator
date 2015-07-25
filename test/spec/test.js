@@ -1,4 +1,4 @@
-/* global expect, it, beforeEach, afterEach, describe */
+/* global expect, it, beforeEach, afterEach, describe, context */
 
 'use strict';
 
@@ -6,7 +6,7 @@
 
   describe('Duplikaator', function() {
 
-    var form = $('form');
+    var element = $('.js_duplicate-button');
     var duplikaator = null;
     var pluginName = 'plugin_duplikaator';
     var config = {
@@ -14,44 +14,82 @@
     };
 
     describe('init', function() {
-      beforeEach(function() {
-        duplikaator = form.duplikaator(config).data(pluginName);
+
+      context('when initialised on valid element', function() {
+        beforeEach(function() {
+          duplikaator = element.duplikaator(config).data(pluginName);
+        });
+
+        afterEach(function() {
+          duplikaator.destroy();
+        });
+
+        it('expected to construct object', function() {
+          return expect(duplikaator).to.be.an.object;
+        });
+
+        it('expected to construct object with settings', function() {
+          return expect(duplikaator.settings).to.be.an.object;
+        });
+
+        it('expected to construct object overriding defaults', function() {
+          duplikaator.destroy();
+          var newConfig = {
+            nameGenerator: false
+          };
+          duplikaator = element.duplikaator(newConfig).data(pluginName);
+          var nameGenerator = duplikaator.settings.nameGenerator;
+          return expect(nameGenerator).to.eql(newConfig.nameGenerator);
+        });
+
+        it('expected to construct object with defaults', function() {
+          duplikaator.destroy();
+          duplikaator = element.duplikaator().data(pluginName);
+          var nameGenerator = duplikaator.settings.nameGenerator;
+          return expect(nameGenerator).to.eql(config.nameGenerator);
+        });
       });
 
-      afterEach(function() {
-        duplikaator.destroy();
-      });
+      context('when initialised on invalid element', function() {
 
-      it('expected to construct object', function() {
-        return expect(duplikaator).to.be.an.object;
-      });
+        var backup = null;
 
-      it('expected to construct object with settings', function() {
-        return expect(duplikaator.settings).to.be.an.object;
-      });
+        beforeEach(function() {
+          backup = {
+            'source': element.attr('data-duplikaator-source'),
+            'target': element.attr('data-duplikaator-target')
+          };
+        });
 
-      it('expected to construct object overriding defaults', function() {
-        duplikaator.destroy();
-        var newConfig = {
-          nameGenerator: false
-        };
-        duplikaator = form.duplikaator(newConfig).data(pluginName);
-        var nameGenerator = duplikaator.settings.nameGenerator;
-        return expect(nameGenerator).to.eql(newConfig.nameGenerator);
-      });
+        afterEach(function() {
+          element.attr('data-duplikaator-source', backup.source);
+          element.attr('data-duplikaator-target', backup.target);
+        });
 
-      it('expected to construct object with defaults', function() {
-        duplikaator.destroy();
-        duplikaator = form.duplikaator().data(pluginName);
-        var nameGenerator = duplikaator.settings.nameGenerator;
-        return expect(nameGenerator).to.eql(config.nameGenerator);
+        it('expected to throw error if source is missing', function() {
+          element.removeAttr('data-duplikaator-source');
+          function init() {
+            element.duplikaator().data(pluginName);
+          }
+          var message = 'Invalid element. Missing source.';
+          return expect(init).to.throw(ReferenceError, message);
+        });
+
+        it('expected to throw error if target is missing', function() {
+          element.removeAttr('data-duplikaator-target');
+          function init() {
+            element.duplikaator().data(pluginName);
+          }
+          var message = 'Invalid element. Missing target.';
+          return expect(init).to.throw(ReferenceError, message);
+        });
       });
 
     });
 
     describe('destroy', function() {
       beforeEach(function() {
-        duplikaator = form.duplikaator(config);
+        duplikaator = element.duplikaator(config);
       });
       it('expected to remove data', function() {
         duplikaator.data(pluginName).destroy();
@@ -61,7 +99,7 @@
 
     describe('duplicate', function() {
       beforeEach(function() {
-        duplikaator = form.duplikaator(config).data(pluginName);
+        duplikaator = element.duplikaator(config).data(pluginName);
       });
 
       afterEach(function() {
