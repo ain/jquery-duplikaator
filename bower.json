@@ -10,7 +10,8 @@
     "**/.*",
     "Gruntfile.js",
     ".jscsrc",
-    ".jshintrc"
+    ".jshintrc",
+    ".travis.yml"
   ],
   "dependencies": {
     "jquery": "~1.2.6"
