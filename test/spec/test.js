@@ -36,13 +36,25 @@
       it('expected to construct object with defaults', function() {
         duplikaator.destroy();
         duplikaator = form.duplikaator().data(pluginName);
-        return expect(duplikaator.settings.selectors.triggerer).to.eql('.js_duplikaator__triggerer');
+        return expect(duplikaator.settings.selectors.triggerer).to.eql(config.selectors.triggerer);
       });
+
+      it('expected to have click handler on triggerer', function() {
+        return expect(duplikaator).to.be.an.object;
+      });
+
     });
 
-    //describe('duplicate', function() {
+    describe('duplicate', function() {
+      beforeEach(function() {
+        duplikaator = form.duplikaator(config).data(pluginName);
+      });
 
-    //});
+      afterEach(function() {
+        duplikaator.destroy();
+      });
+
+    });
 
   });
 })();
