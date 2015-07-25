@@ -4,7 +4,7 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 
 ## Requirements
 
-- jQuery 1.2 or greater
+- jQuery 1.2.6 or greater
 
 ## Example
 
