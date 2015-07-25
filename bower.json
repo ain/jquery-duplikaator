@@ -8,12 +8,16 @@
     ".git*",
     "test/",
     "**/.*",
-    "Gruntfile.js"
+    "Gruntfile.js",
+    ".jscsrc",
+    ".jshintrc"
   ],
   "dependencies": {
     "jquery": "~1.2.6"
   },
   "devDependencies": {
+    "mocha": "~2.2.5",
+    "chai": "~3.0.0"
   },
   "authors": [
     "Ain Tohvri <ain@flashbit.net>"
