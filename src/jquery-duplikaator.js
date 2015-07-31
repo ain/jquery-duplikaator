@@ -19,16 +19,36 @@
     this.settings = $.extend({}, defaults, options);
 
     var self = this;
+    var source = null;
+    var target = null;
 
     this.destroy = function() {
+      removeEventHandlers();
       this.element.removeData('plugin_' + pluginName);
     };
 
-    function addEventListeners() {
+    this.duplicate = function() {
+      console.log('dupe!');
+      var clone = source.clone();
+      target.append(clone);
+      return clone;
+      //return source.clone().appendTo(target);
+    };
+
+    function getSourceElement() {
+      return $(getData(datas.source));
+    }
+
+    function getTargetElement() {
+      return $(getData(datas.target));
     }
 
     function getData(data) {
       return self.element.attr('data-' + data);
+    }
+
+    function getNamespacedEvent(event) {
+      return event + '.' + pluginName;
     }
 
     function evaluateElement() {
@@ -39,8 +59,32 @@
       }
     }
 
+    function addEventListeners() {
+      if (self.element.on !== undefined) {
+        console.log('binding on');
+        self.element.on(getNamespacedEvent('click'), handleClick);
+      } else {
+        console.log('binding bind');
+        self.element.bind(getNamespacedEvent('click'), handleClick);
+      }
+    }
+
+    function removeEventHandlers() {
+      if (self.element.off !== undefined) {
+        self.element.off(getNamespacedEvent('click'));
+      } else {
+        self.element.unbind(getNamespacedEvent('click'));
+      }
+    }
+
+    function handleClick() {
+      self.duplicate();
+    }
+
     function init() {
       evaluateElement();
+      source = getSourceElement();
+      target = getTargetElement();
       addEventListeners();
     }
 
