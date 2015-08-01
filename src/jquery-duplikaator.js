@@ -21,18 +21,24 @@
     var self = this;
     var source = null;
     var target = null;
+    var backup = null;
 
     this.destroy = function() {
       removeEventHandlers();
+      this.restore();
       this.element.removeData('plugin_' + pluginName);
     };
 
     this.duplicate = function() {
-      console.log('dupe!');
+      //console.log('dupe!');
       var clone = source.clone();
       target.append(clone);
       return clone;
       //return source.clone().appendTo(target);
+    };
+
+    this.restore = function() {
+      target.html(backup);
     };
 
     function getSourceElement() {
@@ -61,10 +67,8 @@
 
     function addEventListeners() {
       if (self.element.on !== undefined) {
-        console.log('binding on');
         self.element.on(getNamespacedEvent('click'), handleClick);
       } else {
-        console.log('binding bind');
         self.element.bind(getNamespacedEvent('click'), handleClick);
       }
     }
@@ -85,6 +89,7 @@
       evaluateElement();
       source = getSourceElement();
       target = getTargetElement();
+      backup = target.html();
       addEventListeners();
     }
 
