@@ -17,6 +17,7 @@
 
     this.element = $(element);
     this.settings = $.extend({}, defaults, options);
+    this.sequenceId = 0;
 
     var self = this;
     var source = null;
@@ -30,16 +31,24 @@
     };
 
     this.duplicate = function() {
-      //console.log('dupe!');
+      this.sequenceId++;
       var clone = source.clone();
+      if (this.settings.nameGenerator) {
+        updateNames(clone);
+      }
       target.append(clone);
       return clone;
-      //return source.clone().appendTo(target);
     };
 
     this.restore = function() {
       target.html(backup);
     };
+
+    function updateNames(dupe) {
+      dupe.find('*[name]').each(function() {
+        $(this).attr('name', $(this).attr('name') + self.sequenceId);
+      });
+    }
 
     function getSourceElement() {
       return $(getData(datas.source));
