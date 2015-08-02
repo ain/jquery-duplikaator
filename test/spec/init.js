@@ -1,4 +1,4 @@
-/* global expect, it, beforeEach, afterEach, describe, context, xdescribe, xit */
+/* global expect, it, beforeEach, afterEach, describe, context */
 
 'use strict';
 
@@ -85,53 +85,6 @@
           var message = 'Invalid element. Missing target.';
           return expect(init).to.throw(ReferenceError, message);
         });
-      });
-
-    });
-
-    describe('destroy', function() {
-      beforeEach(function() {
-        duplikaator = element.duplikaator(config);
-      });
-
-      it('expected to remove data', function() {
-        duplikaator.data(pluginName).destroy();
-        return expect(duplikaator.data(pluginName)).to.not.be.ok;
-      });
-
-      it('expected to restore original markup', function() {
-        var expectation = $(element.attr('data-duplikaator-target')).html();
-        duplikaator.data(pluginName).duplicate();
-        duplikaator.data(pluginName).destroy();
-        var actual = $(element.attr('data-duplikaator-target')).html();
-        return expect(actual).to.equal(expectation);
-      });
-
-    });
-
-    xdescribe('duplicate', function() {
-      beforeEach(function() {
-        duplikaator = element.duplikaator(config).data(pluginName);
-      });
-
-      afterEach(function() {
-        duplikaator.destroy();
-      });
-
-      it('expected to duplicate source element into target', function() {
-        var source = $(element.attr('data-duplikaator-source')).html();
-        var target = $(element.attr('data-duplikaator-target')).html();
-        var expectation = source + target;
-        //console.log('trigger');
-        element.trigger('click.duplikaator');
-        //duplikaator.duplicate();
-        var newTarget = $(element.attr('data-duplikaator-target')).html();
-        return expect(newTarget).to.eql(expectation);
-      });
-
-      xit('expected to duplicate source element', function() {
-        var fieldsets = $(element.attr('data-duplikaator-source'));
-        return expect(fieldsets.length).to.eql(2);
       });
 
     });
