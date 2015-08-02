@@ -51,13 +51,18 @@
           duplikaator.settings.nameGenerator = true;
         });
 
-        it('expected to update name of duplicated elements', function() {
+        it('expected to update names of duplicated elements', function() {
           var source = $(element.attr('data-duplikaator-source'));
           var target = $(element.attr('data-duplikaator-target'));
           var firstName = source.find('input').eq(0).attr('name');
+          var secondName = source.find('input').eq(1).attr('name');
           duplikaator.duplicate();
-          var matches = target.find('input[name=' + firstName + '1]');
-          return expect(matches).to.have.length.above(0);
+          duplikaator.duplicate();
+          var matches = target.find('input[name=' + firstName + '1]')
+            .add(target.find('input[name=' + secondName + '1]'))
+            .add(target.find('input[name=' + firstName + '2]'))
+            .add(target.find('input[name=' + secondName + '2]'));
+          return expect(matches).to.have.length(4);
         });
 
       });
