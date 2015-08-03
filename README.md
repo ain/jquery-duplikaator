@@ -2,16 +2,30 @@
 
 jQuery Duplikaator duplicates form fields and listens for their change to return compound data.
 
+## Requirements
+
+- jQuery 1.2.6 or greater
+
+## Initilisation
+
+Element that triggers duplication of another element on page, has to define _source_ element that is duplicated and _target_ element where it is duplicated to, e.g.:
+
+``` html
+<a href="#dupe" data-duplikaator-source="form > fieldset" data-duplikaator-target="form" id="duplicator">Duplicate</a>
+```
+
+To initialise:
+
+``` js
+$('#duplicator').duplikaator();
+```
+
 ## Options
 
 | Name | Type | Default | Description |
 | ---- | ---- | ------- | ----------- |
 | `nameGenerator` | `Boolean` | `true` | Automagically appends duplication sequence ID to the end of input name, e.g. `forename` becomes `forename1` on duplication. |
 | `emitter` | `Boolean` | `false` | Dispatch `duplicate` event whenever element is duplicated |
-
-## Requirements
-
-- jQuery 1.2.6 or greater
 
 ## Example
 
@@ -27,8 +41,8 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 <script type="text/javascript">
   $(document).ready(function() {
     $(".js_duplicate_button").duplikaator({
-      nameGenerator: true, // generate input names, e.g. duplikaator_value1 for 1st dupe
-      emitter: true // emit event with duped element and duplication sequence ID
+      nameGenerator: true,
+      emitter: true
     });
   });
 </script>
