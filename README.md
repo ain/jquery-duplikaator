@@ -20,8 +20,8 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 <script type="text/javascript">
   $(document).ready(function() {
     $("form").duplikaator({
-      nameGenerator: true, # generate input names, e.g. duplikaator_value1 for 1st dupe
-      emitter: true # emit event with duped element and duplication sequence ID
+      nameGenerator: true, // generate input names, e.g. duplikaator_value1 for 1st dupe
+      emitter: true // emit event with duped element and duplication sequence ID
     });
   });
 </script>
