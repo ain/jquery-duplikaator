@@ -4,10 +4,10 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 
 ## Options
 
-| Name | Type | Default | Description |
-| ---- | ---- | ------- | ----------- |
-| `nameGenerator` | `Boolean` | `true` | Automagically appends duplication sequence ID to the end of input name, e.g. `forename` becomes `forename1` on duplication. |
-| `emitter` | `Boolean` | `false` | Dispatch `duplicate` event whenever element is duplicated | 
+| Name | Type | Default | Description |
+| ---- | ---- | ------- | ----------- |
+| `nameGenerator` | `Boolean` | `true` | Automagically appends duplication sequence ID to the end of input name, e.g. `forename` becomes `forename1` on duplication. |
+| `emitter` | `Boolean` | `false` | Dispatch `duplicate` event whenever element is duplicated |
 
 ## Requirements
 
