@@ -7,7 +7,8 @@
   function Duplikaator(element, options) {
 
     var defaults = {
-      nameGenerator: true
+      nameGenerator: true,
+      emitter: false
     };
 
     var datas = {
@@ -36,6 +37,9 @@
       if (this.settings.nameGenerator) {
         updateNames(clone);
       }
+      if (this.settings.emitter) {
+        emitEvent(clone);
+      }
       target.append(clone);
       return clone;
     };
@@ -48,6 +52,11 @@
       dupe.find('*[name]').each(function() {
         $(this).attr('name', $(this).attr('name') + self.sequenceId);
       });
+    }
+
+    function emitEvent(clone) {
+      var data = [clone, self.sequenceId];
+      self.element.trigger(getNamespacedEvent('duplicate'), data);
     }
 
     function getSourceElement() {
