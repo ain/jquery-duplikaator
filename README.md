@@ -10,15 +10,20 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 
 ```html
 <form>
-  <input type="text" name="duplikaator" value="first value" data>
-  <input type="button" value="Duplicate">
+  <input type="button" value="Duplicate" data-duplikaator-source="form > fieldset" data-duplikaator-target="form">
+  <fieldset>
+    <input type="text" name="duplikaator_value" value="Duplikaator value">
+  <fieldset>
 </form>
 
 <script src="scripts/jquery-duplikaator.js"></script>
 <script type="text/javascript">
-   $(document).ready(function() {
-      $("form").duplikaator();
-   });
+  $(document).ready(function() {
+    $("form").duplikaator({
+      nameGenerator: true, # generate input names, e.g. duplikaator_value1 for 1st dupe
+      emitter: true # emit event with duped element and duplication sequence ID
+    });
+  });
 </script>
 ```
 
