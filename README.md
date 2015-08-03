@@ -17,7 +17,7 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 
 ```html
 <form>
-  <input type="button" value="Duplicate" data-duplikaator-source="form > fieldset" data-duplikaator-target="form">
+  <input type="button" value="Duplicate" data-duplikaator-source="form > fieldset" data-duplikaator-target="form" class="js_duplicate_button">
   <fieldset>
     <input type="text" name="duplikaator_value" value="Duplikaator value">
   <fieldset>
@@ -26,7 +26,7 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 <script src="scripts/jquery-duplikaator.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
-    $("form").duplikaator({
+    $(".js_duplicate_button").duplikaator({
       nameGenerator: true, // generate input names, e.g. duplikaator_value1 for 1st dupe
       emitter: true // emit event with duped element and duplication sequence ID
     });
