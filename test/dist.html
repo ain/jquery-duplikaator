@@ -1,0 +1,33 @@
+<!doctype html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mocha Spec Runner</title>
+</head>
+<body>
+  <form action="#">
+    <button class="js_duplicate-button" data-duplikaator-source="form > fieldset" data-duplikaator-target="form">Duplicate</button>
+    <fieldset>
+      <input type="text" name="title">
+      <input type="password" name="password">
+    </fieldset>
+  </form>
+
+  <script src="../bower_components/jquery/jquery.js"></script>
+  <script src="../bower_components/mocha/mocha.js"></script>
+  <script>mocha.setup('bdd')</script>
+  <script src="../bower_components/chai/chai.js"></script>
+  <script>var expect = chai.expect;</script>
+  <script src="../dist/jquery-duplikaator.min.js"></script>
+  <script src="spec/init.js"></script>
+  <script src="spec/destroy.js"></script>
+  <script src="spec/restore.js"></script>
+  <script src="spec/duplicate.js"></script>
+  <script src="spec/emitter.js"></script>
+  <script>
+    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
+      mocha.run();
+    }
+  </script>
+</body>
+</html>

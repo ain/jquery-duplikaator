@@ -51,12 +51,19 @@ module.exports = function(grunt) {
       ]
     },
     mocha: {
-      all: {
+      dev: {
         options: {
           run: true,
           log: true
         },
         src: ['<%= yeoman.test %>/index.html']
+      },
+      dist: {
+        options: {
+          run: true,
+          log: true
+        },
+        src: ['<%= yeoman.test %>/dist.html']
       }
     },
     concurrent: {
@@ -64,12 +71,19 @@ module.exports = function(grunt) {
         tasks: [
           'jshint',
           'jscs',
-          'mocha'
+          'mocha:dev'
         ]
       },
       build: {
         tasks: [
           'uglify'
+        ]
+      },
+      fullQA: {
+        tasks: [
+          'jshint',
+          'jscs',
+          'mocha'
         ]
       }
     },
@@ -109,7 +123,7 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('test', ['mocha']);
+  grunt.registerTask('test', ['mocha:dev']);
   grunt.registerTask('qa', ['concurrent:qa']);
 
   grunt.registerTask('build', [
@@ -120,5 +134,5 @@ module.exports = function(grunt) {
 
   grunt.registerTask('default', ['build']);
 
-  grunt.registerTask('travis', ['concurrent:qa']);
+  grunt.registerTask('travis', ['concurrent:fullQA']);
 };
