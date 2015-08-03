@@ -11,7 +11,8 @@
     var pluginName = 'plugin_duplikaator';
 
     var config = {
-      nameGenerator: true
+      nameGenerator: true,
+      emitter: false
     };
 
     describe('init', function() {
@@ -43,11 +44,23 @@
           return expect(nameGenerator).to.eql(newConfig.nameGenerator);
         });
 
-        it('expected to construct object with defaults', function() {
-          duplikaator.destroy();
-          duplikaator = element.duplikaator().data(pluginName);
-          var nameGenerator = duplikaator.settings.nameGenerator;
-          return expect(nameGenerator).to.eql(config.nameGenerator);
+        context('with default options', function() {
+
+          beforeEach(function() {
+            duplikaator.destroy();
+            duplikaator = element.duplikaator().data(pluginName);
+          });
+
+          it('expected to have name generator', function() {
+            var nameGenerator = duplikaator.settings.nameGenerator;
+            return expect(nameGenerator).to.eql(config.nameGenerator);
+          });
+
+          it('expected to have emitter', function() {
+            var emitter = duplikaator.settings.emitter;
+            return expect(emitter).to.eql(config.emitter);
+          });
+
         });
 
       });
