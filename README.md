@@ -49,8 +49,8 @@ jQuery Duplikaator duplicates form fields and listens for their change to return
 Following tasks are there to help with development:
 
 - `grunt watch:bdd` listens to tests and source, reruns tests
-- `grunt qa` run QA task that includes tests and JSHint
-- `grunt build` minify source to dist/
+- `grunt qa` run QA task that includes tests, linting and conventions check
+- `grunt build` minify source to `dist/`
 
 ## Licence
 Copyright © 2015 Ain Tohvri. Licenced under [GPLv3](LICENSE).
