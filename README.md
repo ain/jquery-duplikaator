@@ -1,5 +1,7 @@
 # jquery-duplikaator [![Build Status](http://img.shields.io/travis/ain/jquery-duplikaator.svg)](https://travis-ci.org/ain/jquery-duplikaator)
 
+> **Warning** this module is no more maintained. Please search for modern alternatives.
+
 jQuery Duplikaator duplicates form fields and listens for their change to return compound data.
 
 ## Requirements
